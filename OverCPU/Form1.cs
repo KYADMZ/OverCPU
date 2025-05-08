@@ -23,7 +23,7 @@ namespace OverCPU
 
             lblCPUN.Text = cpuName;
             lbldiskn.Text = diskName;
-            
+
         }
 
         private void InitializePerformanceCounters()
@@ -60,13 +60,14 @@ namespace OverCPU
             lbltotalram.Text = $"RAM Total: {GetTotalRAM()} MB";
             progressBarcpu.Value = (int)Math.Min(cpuUsage, 100);
             progressBarRAM.Value = (int)Math.Min(ramUsage, 100);
+            UpdateBatteryStatus();
 
         }
 
         private float GetTotalRAM()
         {
             return new Microsoft.VisualBasic.Devices.ComputerInfo().TotalPhysicalMemory / (1024 * 1024);
-           
+
         }
 
         static string GetHardwareInfo(string command)
@@ -92,5 +93,22 @@ namespace OverCPU
                 return $"Error: {ex.Message}";
             }
         }
+        private void UpdateBatteryStatus()
+        {
+            PowerStatus battery = SystemInformation.PowerStatus;
+
+            float batteryLifePercent = battery.BatteryLifePercent * 100;
+            string powerLineStatus = battery.PowerLineStatus.ToString(); // Online/Offline
+            int batteryLifeRemaining = battery.BatteryLifeRemaining; // Seconds remaining
+
+            string batteryStatus = $"Batería: {batteryLifePercent:0.00}%\n" +
+                                   $"Fuente de poder: {powerLineStatus}\n" +
+                                   $"Tiempo de vida Restante: {batteryLifeRemaining / 60} minutes";
+
+            // Muestra esta información en un label por ejemplo
+            label2.Text = batteryStatus;
+        }
+
+      
     }
 }
