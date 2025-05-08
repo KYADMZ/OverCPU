@@ -24,6 +24,7 @@ namespace OverCPU
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             timer1 = new System.Windows.Forms.Timer(components);
             panel1 = new Panel();
             lblCPUN = new Label();
@@ -42,6 +43,7 @@ namespace OverCPU
             panel4 = new Panel();
             label1 = new Label();
             label2 = new Label();
+            button1 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -209,17 +211,29 @@ namespace OverCPU
             label2.TabIndex = 1;
             label2.Text = "Status: 0%";
             // 
+            // button1
+            // 
+            button1.Location = new Point(12, 482);
+            button1.Name = "button1";
+            button1.Size = new Size(98, 23);
+            button1.TabIndex = 5;
+            button1.Text = "Transparencia";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(272, 531);
+            ClientSize = new Size(272, 510);
+            Controls.Add(button1);
             Controls.Add(panel4);
             Controls.Add(panel1);
             Controls.Add(panel2);
             Controls.Add(panel3);
             Font = new Font("Segoe UI", 9F);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "Form1";
             Text = "Monitor de Recursos";
@@ -257,5 +271,6 @@ namespace OverCPU
         private Panel panel4;
         private Label label1;
         private Label label2;
+        private Button button1;
     }
 }

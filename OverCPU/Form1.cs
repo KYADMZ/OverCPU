@@ -14,6 +14,7 @@ namespace OverCPU
         private PerformanceCounter diskWriteCounter;
         private PerformanceCounter progcpuCounter;
         private PerformanceCounter programCounter;
+        private int cont=0;
         public Form1()
         {
             InitializeComponent();
@@ -109,6 +110,22 @@ namespace OverCPU
             label2.Text = batteryStatus;
         }
 
-      
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (cont == 0)
+            {
+                this.Opacity = 0.2;
+                Application.EnableVisualStyles();
+                cont = 1;
+            }
+            else
+            {
+
+                cont = 0; 
+                this.Opacity = 1.0;
+                Application.EnableVisualStyles();
+            }
+            
+        }
     }
 }
